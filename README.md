@@ -1,36 +1,165 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# What is LazyDev?
 
-## Getting Started
+LazyDev is a development tool crafted for use within Next.js or React frameworks, streamlining navigation and bookmarking across pages.
 
-First, run the development server:
+> It's important to note that LazyDev is solely applicable during the development phase and does not ship to production environments.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Currently, users can access a blue button positioned at the bottom right corner of the screen. This button triggers the display of a side menu component, facilitating effortless movement between site pages and providing convenient access to external links crucial for ongoing projects or resource preservation.
+
+---
+
+# Why? What's the idea? And what's next?
+
+- It was always painful to navigate between pages while developing a project. Just when I start to build a new project, I never straightaway start with navigation. I always start with the core functionality and then move to the navigation part. Still I have to navigate between pages to check if everything is working fine. And it's always a pain to navigate between pages via typing. So, I thought of building a tool that will help me navigate between pages easily. And that's how LazyDev was born.
+
+- Then comes the bookmarking part. I always have to open a new tab and search for the resources that I need. And then I have to bookmark them. And then I have to open the bookmarked page to access the resource. Saving and getting back to them is now easy with LazyDev.
+
+### What's next?
+
+- To leverage CLI to easily add this tool to your project.
+- To straightaway manage links via UI only and no configs via utilizing local storage to save keys and links. And persist data if user wants to.
+- Better UI and UX. Maybe even a better website and pro plans.
+
+> I'm restricting myself to stick just too bookmarks. In future can introduce more features like notes, todos, etc as well. This will make LazyDev a complete dev tool.
+
+- Even community can contribute to this project to make it yours too. Add you ideas (as github issues) and contribute via code.
+
+---
+
+# How to install or add it to my project?
+
+### Prerequisites
+
+- [shadcn/ui](https://ui.shadcn.com/docs/components/sheet) sheet component
+- and nothing else
+
+### Steps
+
+1. Create a folder named `lazy-dev` in components
+2. Create a component in the given folder `lazy-dev.tsx`. And copy paste the following code.
+
+```tsx
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
+import Link from 'next/link'
+import LinkManagerData from './link-manager'
+
+const LazyDev = () => {
+  if (process.env.NODE_ENV !== 'development') return null
+
+  return (
+    <Sheet>
+      <SheetTrigger className="fixed right-0 top-3/4 z-50 flex flex-col items-center justify-center rounded-l-md bg-blue-500 py-2.5 pl-1 pr-0.5 font-mono text-xs text-white">
+        <svg
+          className="h-5 w-5 -rotate-90"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m18 15-6-6-6 6" />
+        </svg>
+        <span className="-rotate-90">v</span>
+        <span className="-mt-1.5 -rotate-90">e</span>
+        <span className="-mt-1.5 -rotate-90">D</span>
+        <span className="-mt-1 -rotate-90">y</span>
+        <span className="-mt-1.5 -rotate-90">z</span>
+        <span className="-mt-1.5 -rotate-90">a</span>
+        <span className="-mt-1.5 -rotate-90">L</span>
+      </SheetTrigger>
+
+      <SheetContent className="flex flex-col gap-6 border-none p-4">
+        <SheetHeader>
+          <SheetTitle className="text-center text-xl text-blue-500">
+            Link Manager
+          </SheetTitle>
+        </SheetHeader>
+
+        {LinkManagerData?.map(({ title, links }) => (
+          <div
+            key={title}
+            className="flex flex-col items-center gap-y-4 text-black"
+          >
+            <div>
+              <p className="text-lg font-medium">{title}</p>
+            </div>
+
+            <div className="flex w-full flex-col gap-y-3">
+              {links.map(({ href, label }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  target={href.startsWith('http') ? '_blank' : '_self'}
+                >
+                  <div className="w-full rounded-xl border-2 p-3 text-center">
+                    {label}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
+      </SheetContent>
+    </Sheet>
+  )
+}
+
+export default LazyDev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Add links via creating config as `link-manager.ts` in same folder. Here is an example config.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```ts
+const LinkManager = [
+  {
+    title: 'Navigation',
+    links: [
+      {
+        href: '/',
+        label: 'Home',
+      },
+    ],
+  },
+  {
+    title: 'Bookmarks',
+    links: [
+      {
+        href: 'https://github.com/nrjdalal/lazy-dev',
+        label: 'LazyDev',
+      },
+    ],
+  },
+]
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+export default LinkManager
+```
 
-## Learn More
+4. Import `LazyDev` in RootLayout and add it within body.
 
-To learn more about Next.js, take a look at the following resources:
+```tsx
+import './globals.css'
+import LazyDev from '@/components/lazy-dev/lazy-dev'
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <LazyDev />
+      </body>
+    </html>
+  )
+}
+```
