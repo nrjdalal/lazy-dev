@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import LazyDev from '@/components/devtools/lazy-dev'
+import LazyDev from '@/components/lazy-dev/lazy-dev'
 
 const inter = Inter({ subsets: ['latin'] })
 
