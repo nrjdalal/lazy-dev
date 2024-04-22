@@ -17,7 +17,7 @@ const LinkManager = [
     links: [
       {
         href: 'https://github.com/nrjdalal/lazy-dev',
-        label: 'LazyDev',
+        label: 'LazyDev GitHub Repository',
       },
     ],
   },

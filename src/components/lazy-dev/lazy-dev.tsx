@@ -33,7 +33,7 @@ const LazyDev = () => {
         {LinkManagerData?.map(({ title, links }) => (
           <div key={title} className="flex flex-col gap-y-4 text-black">
             <div>
-              <p className="text-right text-lg font-medium">{title}</p>
+              <p className="text-center font-medium">{title}</p>
             </div>
 
             <div className="flex w-full flex-col gap-y-3">
@@ -43,11 +43,13 @@ const LazyDev = () => {
                   href={href}
                   target={href.startsWith('http') ? '_blank' : '_self'}
                 >
-                  <div className="w-full rounded-lg border-[1.5px] bg-white p-3">
-                    <div className="font-medium text-black">{label}</div>
-                    <div className="mt-1 text-xs text-blue-500">
-                      {href.replace('http://', '').replace('https://', '')}
-                    </div>
+                  <div className="flex w-full flex-wrap items-center justify-between rounded-lg border-[1.5px] bg-white p-3">
+                    <p className="truncate text-sm font-medium text-black">
+                      {label}
+                    </p>
+                    <p className="mt-1 truncate text-right text-xs text-blue-500">
+                      {href}
+                    </p>
                   </div>
                 </Link>
               ))}
