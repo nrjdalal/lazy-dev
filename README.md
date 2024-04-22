@@ -41,18 +41,12 @@ Currently, users can access a blue button positioned at the bottom right corner 
 2. Create a component in the given folder `lazy-dev.tsx`. And copy paste the following code.
 
 ```tsx
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import Link from 'next/link'
 import LinkManagerData from './link-manager'
 
 const LazyDev = () => {
-  if (process.env.NODE_ENV !== 'development') return null
+  // if (process.env.NODE_ENV !== 'development') return null
 
   return (
     <Sheet>
@@ -78,20 +72,11 @@ const LazyDev = () => {
         <span className="-mt-1.5 -rotate-90">L</span>
       </SheetTrigger>
 
-      <SheetContent className="flex flex-col gap-6 border-none p-4">
-        <SheetHeader>
-          <SheetTitle className="text-center text-xl text-blue-500">
-            Link Manager
-          </SheetTitle>
-        </SheetHeader>
-
+      <SheetContent className="flex flex-col gap-6 border-none bg-slate-50 p-4 pt-12">
         {LinkManagerData?.map(({ title, links }) => (
-          <div
-            key={title}
-            className="flex flex-col items-center gap-y-4 text-black"
-          >
+          <div key={title} className="flex flex-col gap-y-4 text-black">
             <div>
-              <p className="text-lg font-medium">{title}</p>
+              <p className="text-center font-medium">{title}</p>
             </div>
 
             <div className="flex w-full flex-col gap-y-3">
@@ -101,8 +86,13 @@ const LazyDev = () => {
                   href={href}
                   target={href.startsWith('http') ? '_blank' : '_self'}
                 >
-                  <div className="w-full rounded-xl border-2 p-3 text-center">
-                    {label}
+                  <div className="flex w-full flex-wrap items-center justify-between rounded-lg border-[1.5px] bg-white p-3">
+                    <p className="truncate text-sm font-medium text-black">
+                      {label}
+                    </p>
+                    <p className="mt-1 truncate text-right text-xs text-blue-500">
+                      {href}
+                    </p>
                   </div>
                 </Link>
               ))}
@@ -115,33 +105,6 @@ const LazyDev = () => {
 }
 
 export default LazyDev
-```
-
-3. Add links via creating config as `link-manager.ts` in same folder. Here is an example config.
-
-```ts
-const LinkManager = [
-  {
-    title: 'Navigation',
-    links: [
-      {
-        href: '/',
-        label: 'Home',
-      },
-    ],
-  },
-  {
-    title: 'Bookmarks',
-    links: [
-      {
-        href: 'https://github.com/nrjdalal/lazy-dev',
-        label: 'LazyDev',
-      },
-    ],
-  },
-]
-
-export default LinkManager
 ```
 
 4. Import `LazyDev` in RootLayout and add it within body.
