@@ -43,11 +43,11 @@ const LazyDev = () => {
                   href={href}
                   target={href.startsWith('http') ? '_blank' : '_self'}
                 >
-                  <div className="flex w-full flex-wrap items-center justify-between rounded-lg border-[1.5px] bg-white p-3">
+                  <div className="flex w-full flex-wrap items-center justify-between gap-1 rounded-lg border-[1.5px] bg-white p-3">
                     <p className="truncate text-sm font-medium text-black">
                       {label}
                     </p>
-                    <p className="mt-1 truncate text-right text-xs text-blue-500">
+                    <p className="truncate text-right text-xs text-blue-500">
                       {href}
                     </p>
                   </div>
