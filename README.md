@@ -1,3 +1,5 @@
+Check out the [demo](https://lazy-dev.vercel.app/). Shipped to production for demo purposes. But remember, it's a development tool and not meant for production.
+
 # What is LazyDev?
 
 LazyDev is a development tool crafted for use within Next.js or React frameworks, streamlining navigation and bookmarking across pages.
