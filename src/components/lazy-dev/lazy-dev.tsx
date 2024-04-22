@@ -29,7 +29,10 @@ const LazyDev = () => {
         <span className="-mt-1.5 -rotate-90">L</span>
       </SheetTrigger>
 
-      <SheetContent className="flex flex-col gap-6 border-none bg-slate-50 p-4 pt-12">
+      <SheetContent className="flex flex-col gap-6 border-none bg-slate-50 p-4">
+        <p className="font-medium text-blue-500">LazyDev</p>
+        <div className=" -mt-4 h-0.5 w-full bg-slate-200" />
+
         {LinkManagerData?.map(({ title, links }) => (
           <div key={title} className="flex flex-col gap-y-4 text-black">
             <div>
