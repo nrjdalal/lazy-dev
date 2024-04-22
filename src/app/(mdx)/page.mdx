@@ -1,3 +1,26 @@
+# What is LazyDev?
+
+LazyDev is a development tool crafted for use within Next.js or React frameworks, streamlining navigation and bookmarking across pages.
+
+> It's important to note that LazyDev is solely applicable during the development phase and does not ship to production environments.
+
+Currently, users can access a blue button positioned at the bottom right corner of the screen. This button triggers the display of a side menu component, facilitating effortless movement between site pages and providing convenient access to external links crucial for ongoing projects or resource preservation.
+
+---
+
+# How to install or add it to my project?
+
+### Prerequisites
+
+- [shadcn/ui](https://ui.shadcn.com/docs/components/sheet) sheet component
+- and nothing else
+
+### Steps
+
+1. Create a folder named `lazy-dev` in components
+2. Create a component in the given folder `lazy-dev.tsx`. And copy paste the following code.
+
+```tsx
 import {
   Sheet,
   SheetContent,
@@ -9,7 +32,7 @@ import Link from 'next/link'
 import LinkManagerData from './link-manager'
 
 const LazyDev = () => {
-  // if (process.env.NODE_ENV !== 'development') return null
+  if (process.env.NODE_ENV !== 'development') return null
 
   return (
     <Sheet>
@@ -72,3 +95,53 @@ const LazyDev = () => {
 }
 
 export default LazyDev
+```
+
+3. Add links via creating config as `link-manager.ts` in same folder. Here is an example config.
+
+```ts
+const LinkManager = [
+  {
+    title: 'Navigation',
+    links: [
+      {
+        href: '/',
+        label: 'Home',
+      },
+    ],
+  },
+  {
+    title: 'Bookmarks',
+    links: [
+      {
+        href: 'https://github.com/nrjdalal/lazy-dev',
+        label: 'LazyDev',
+      },
+    ],
+  },
+]
+
+export default LinkManager
+```
+
+4. Import `LazyDev` in RootLayout and add it within body.
+
+```tsx
+import './globals.css'
+import LazyDev from '@/components/lazy-dev/lazy-dev'
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <LazyDev />
+      </body>
+    </html>
+  )
+}
+```
