@@ -35,20 +35,11 @@ const LazyDev = () => {
         <span className="-mt-1.5 -rotate-90">L</span>
       </SheetTrigger>
 
-      <SheetContent className="flex flex-col gap-6 border-none p-4">
-        <SheetHeader>
-          <SheetTitle className="text-center text-xl text-blue-500">
-            Link Manager
-          </SheetTitle>
-        </SheetHeader>
-
+      <SheetContent className="flex flex-col gap-6 border-none bg-slate-50 p-4 pt-12">
         {LinkManagerData?.map(({ title, links }) => (
-          <div
-            key={title}
-            className="flex flex-col items-center gap-y-4 text-black"
-          >
+          <div key={title} className="flex flex-col gap-y-4 text-black">
             <div>
-              <p className="text-lg font-medium">{title}</p>
+              <p className="text-right text-lg font-medium">{title}</p>
             </div>
 
             <div className="flex w-full flex-col gap-y-3">
@@ -58,8 +49,11 @@ const LazyDev = () => {
                   href={href}
                   target={href.startsWith('http') ? '_blank' : '_self'}
                 >
-                  <div className="w-full rounded-xl border-2 p-3 text-center">
-                    {label}
+                  <div className="w-full rounded-lg border-[1.5px] bg-white p-3">
+                    <div className="font-medium text-black">{label}</div>
+                    <div className="mt-1 text-xs text-blue-500">
+                      {href.replace('http://', '').replace('https://', '')}
+                    </div>
                   </div>
                 </Link>
               ))}
