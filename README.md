@@ -8,6 +8,10 @@ LazyDev is a development tool crafted for use within Next.js or React frameworks
 
 Currently, users can access a blue button positioned at the bottom right corner of the screen. This button triggers the display of a side menu component, facilitating effortless movement between site pages and providing convenient access to external links crucial for ongoing projects or resource preservation.
 
+![](https://raw.githubusercontent.com/nrjdalal/lazy-dev/main/public/LazyDev-Next-js-React-Dev-Tool-1.png)
+
+![](https://raw.githubusercontent.com/nrjdalal/lazy-dev/main/public/LazyDev-Next-js-React-Dev-Tool-2.png)
+
 ---
 
 # Why? What's the idea? And what's next?
