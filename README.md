@@ -46,7 +46,7 @@ import Link from 'next/link'
 import LinkManagerData from './link-manager'
 
 const LazyDev = () => {
-  // if (process.env.NODE_ENV !== 'development') return null
+  if (process.env.NODE_ENV !== 'development') return null
 
   return (
     <Sheet>
