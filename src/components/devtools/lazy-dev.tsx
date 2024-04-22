@@ -37,25 +37,30 @@ const LazyDev = () => {
 
       <SheetContent className="flex flex-col gap-6 border-none p-4">
         <SheetHeader>
-          <SheetTitle className="text-xl text-blue-500">
+          <SheetTitle className="text-center text-xl text-blue-500">
             Link Manager
           </SheetTitle>
         </SheetHeader>
 
         {LinkManagerData?.map(({ title, links }) => (
-          <div key={title} className="flex flex-col gap-y-4 text-black">
+          <div
+            key={title}
+            className="flex flex-col items-center gap-y-4 text-black"
+          >
             <div>
               <p className="text-lg font-medium">{title}</p>
             </div>
 
-            <div className="flex flex-col gap-y-3">
+            <div className="flex w-full flex-col gap-y-3">
               {links.map(({ href, label }) => (
                 <Link
                   key={label}
                   href={href}
                   target={href.startsWith('http') ? '_blank' : '_self'}
                 >
-                  <div className="w-full rounded-xl border-2 p-3">{label}</div>
+                  <div className="w-full rounded-xl border-2 p-3 text-center">
+                    {label}
+                  </div>
                 </Link>
               ))}
             </div>
