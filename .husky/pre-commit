@@ -1,1 +1,1 @@
-echo "Pre commit"
+sh code-sync.sh
