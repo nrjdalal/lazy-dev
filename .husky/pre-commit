@@ -1,2 +1,3 @@
 sh code-sync.sh
 bun prettier
+git add -A 2>/dev/null
