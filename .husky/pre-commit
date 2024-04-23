@@ -1,1 +1,2 @@
 sh code-sync.sh
+bun prettier

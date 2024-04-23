@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Page() {
   return (
-    <div className="prose container max-w-screen-lg py-24">
+    <div className="container prose max-w-screen-lg py-24">
       <div className="flex justify-between">
         <p>Not Found</p>
         <p className="flex gap-4">
