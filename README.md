@@ -26,7 +26,7 @@ Currently, users can access a blue button positioned at the bottom right corner 
 - To straightaway manage links via UI only and no configs via utilizing local storage to save keys and links. And persist data if user wants to.
 - Better UI and UX. Maybe even a better website and pro plans.
 
-> I'm restricting myself to stick just too bookmarks. In future can introduce more features like notes, todos, etc as well. This will make LazyDev a complete dev tool.
+> I'm not restricting myself to stick just too bookmarks. In future can introduce more features like notes, todos, etc as well. This will make LazyDev a complete dev tool.
 
 - Even community can contribute to this project to make it yours too. Add you ideas (as github issues) and contribute via code.
 
