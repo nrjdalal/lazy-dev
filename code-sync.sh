@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "Syncing code..."
+
 # delete the file NEW_README.md if it exists
 rm -f NEW_README.md
 
