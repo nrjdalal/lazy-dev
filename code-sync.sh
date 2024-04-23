@@ -29,3 +29,5 @@ sed -i '' -e '/raw.githubusercontent.com/d' "./src/app/(mdx)/page.mdx"
 # replace "// if" with "if" in ./src/app/(mdx)/page.mdx and README.md
 sed -i '' -e 's/\/\/ if/if/g' "./src/app/(mdx)/page.mdx"
 sed -i '' -e 's/\/\/ if/if/g' README.md
+
+git add -A 2>/dev/null
