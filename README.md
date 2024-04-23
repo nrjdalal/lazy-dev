@@ -50,7 +50,7 @@ import Link from 'next/link'
 import LinkManagerData from './link-manager'
 
 const LazyDev = () => {
-  if (process.env.NODE_ENV !== 'development') return null
+  // if (process.env.NODE_ENV !== 'development') return null
 
   return (
     <Sheet>
@@ -112,6 +112,33 @@ const LazyDev = () => {
 }
 
 export default LazyDev
+```
+
+3. Add links via creating config as `link-manager.ts` in same folder. Here is an example config.
+
+```ts
+const LinkManager = [
+  {
+    title: 'Navigation',
+    links: [
+      {
+        href: '/',
+        label: 'Home',
+      },
+    ],
+  },
+  {
+    title: 'Bookmarks',
+    links: [
+      {
+        href: 'https://github.com/nrjdalal/lazy-dev',
+        label: 'LazyDev',
+      },
+    ],
+  },
+]
+
+export default LinkManager
 ```
 
 4. Import `LazyDev` in RootLayout and add it within body.
