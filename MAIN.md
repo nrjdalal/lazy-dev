@@ -1,4 +1,4 @@
-Check out the [demo](https://lazy-dev.vercel.app/). Shipped to production for demo purposes. But remember, it's a development tool and not meant for production.
+Check out the [demo](https://lazy-dev.vercel.app/). Shipped to production for demo purposes. But remember, it's a development tool and not meant for production. :)
 
 # What is LazyDev?
 

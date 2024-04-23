@@ -1,1 +1,1 @@
-sh code-sync.sh
+echo "Husky magic"
