@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "sh code-sync.sh"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",
